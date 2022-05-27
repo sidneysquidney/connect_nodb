@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="top-section">
+    <div class="connect-container mt-3">
+        {% for c in range(7) %}
+            <div class='connect-col' id='column{{ c }}'>
+
+                {% for r in range(5, -1, -1) %}
+                <div class="col-loc">
+                    <div class="col-space {% if board[r | string + c  | string] == 'r' %}red-counter{% endif %} {% if board[r | string + c | string] == 'y' %}yellow-counter{% endif %}"></div>
+                </div>
+                {% endfor %}
+                <div class="col-num">
+                    <form method='POST'>
+                        <p>{{ template_form.hidden_tag() }}</p>
+                        {% if c == 0 %}
+                            {% if game_over == False %}
+                            <p>{{ number_form.zero(class='py-4 px-4 btn btn-outline-danger') }}</p>
+                            {% else %}
+                            <strong class='text-danger'>E</strong>
+                            {% endif %}
+                        {% endif %}
+                        {% if c == 1 %}
+                            {% if game_over == False %}
+                            <p>{{ number_form.one(class='py-4 px-4 btn btn-outline-danger') }}</p>
+                            {% else %}
+                            <strong class='text-danger'>N</strong>
+                            {% endif %}
+                        {% endif %}
+                        {% if c == 2 %}
+                            {% if game_over == False %}
+                            <p>{{ number_form.two(class='py-4 px-4 btn btn-outline-danger') }}</p>
+                            {% else %}
+                            <strong class='text-danger'>D</strong>
+                            {% endif %}
+                        {% endif %}
+                        {% if c == 3 %}
+                            {% if game_over == False %}
+                            <p>{{ number_form.three(class='py-4 px-4 btn btn-outline-danger') }}</p>
+                            {% else %}
+                            <strong class='text-danger'>G</strong>
+                            {% endif %}
+                        {% endif %}
+                        {% if c == 4 %}
+                            {% if game_over == False %}
+                            <p>{{ number_form.four(class='py-4 px-4 btn btn-outline-danger') }}</p>
+                            {% else %}
+                            <strong class='text-danger'>A</strong>
+                            {% endif %}
+                        {% endif %}
+                        {% if c == 5 %}
+                            {% if game_over == False %}
+                            <p>{{ number_form.five(class='py-4 px-4 btn btn-outline-danger') }}</p>
+                            {% else %}
+                            <strong class='text-danger'>M</strong>
+                            {% endif %}
+                        {% endif %}
+                        {% if c == 6 %}
+                            {% if game_over == False %}
+                            <p>{{ number_form.six(class='py-4 px-4 btn btn-outline-danger') }}</p>
+                            {% else %}
+                            <strong class='text-danger'>E</strong>
+                            {% endif %}
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="container">
+    <div class='row my-2 justify-content-center'>
+        <a class="btn btn-outline-primary" href="{{url_for('setup')}}" role="button">New Game</a>
+    </div>
+    <div class="row justify-content-center">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}
+

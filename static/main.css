@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.top-section {
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid green; */
+}
+
+.connect-container {
+    display: inline-flex;
+    width: 560px;
+    height: 560px;
+    /* border: 2px solid red; */
+    background-color: dodgerblue;
+}
+
+.connect-col {
+    width: 80px;
+    height: 100%;
+} 
+
+.connect-col:hover > .col-top .col-space{
+    background-color: red;
+
+}
+
+.col-top, .col-loc, .col-num {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.col-top, .col-num {
+    background-color: white;
+}
+
+.col-num p {
+    width: 100%;
+    height: 100%;
+}
+
+.col-num strong {
+    font-size: 30px;
+}
+
+.col-loc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-space {
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+}
+
+/* .r11, .r12, .r13, .r14, .r15, .r16, .r21, .r22, .r23, .r24, .r25, .r26, .r31, .r32, .r33, .r34, .r35, .r36, .r41, .r42, .r43, .r44, .r45, .r46, .r51, .r52, .r53, .r54, .r55, .r56, .r61, .r62, .r63, .r64, .r65, .r66, .r71, .r72, .r73, .r74, .r75, .r76 {
+    background-color: red;
+}
+
+.y11, .y12, .y13, .y14, .y15, .y16, .y21, .y22, .y23, .y24, .y25, .y26, .y31, .y32, .y33, .y34, .y35, .y36, .y41, .y42, .y43, .y44, .y45, .y46, .y51, .y52, .y53, .y54, .y55, .y56, .y61, .y62, .y63, .y64, .y65, .y66, .y71, .y72, .y73, .y74, .y75, .y76 {
+    background-color: yellow;
+} */
+
+.red-counter {
+    background-color: red;
+}
+
+.yellow-counter {
+    background-color: yellow;
+}
+
+/* #column1 {
+    opacity: 0.5;
+} */
