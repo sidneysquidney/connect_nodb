@@ -13,7 +13,7 @@
                 {% endfor %}
                 <div class="col-num">
                     <form method='POST'>
-                        <p>{{ template_form.hidden_tag() }}</p>
+                        <p>{{ number_form.hidden_tag() }}</p>
                         {% if c == 0 %}
                             {% if game_over == False %}
                             <p>{{ number_form.zero(class='py-4 px-4 btn btn-outline-danger') }}</p>
