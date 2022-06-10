@@ -7,7 +7,7 @@ from grid import Piece
 
 str_to_num_dct = {0: 'zero'}
 dct = {str(r) + str(c): None for r in range(5,-1, -1) for c in range(7) }
-sids_game = UIGame(Human(Piece.RED), RandomAI(Piece.YELLOW))
+# sids_game = UIGame(Human(Piece.RED), RandomAI(Piece.YELLOW))
 levels_dct = {'Easy': RandomAI, 'Medium': MediumAI, 'Hard': HardAI}
 
 def reset_game(level):
