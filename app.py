@@ -5,14 +5,9 @@ from game import UIGame, Game
 from player import Human, RandomAI, MediumAI, HardAI
 from grid import Piece
 
-str_to_num_dct = {0: 'zero'}
-dct = {str(r) + str(c): None for r in range(5,-1, -1) for c in range(7) }
-# sids_game = UIGame(Human(Piece.RED), RandomAI(Piece.YELLOW))
 levels_dct = {'Easy': RandomAI, 'Medium': MediumAI, 'Hard': HardAI}
 
 def reset_game(level):
-    global dct
-    dct = {str(r) + str(c): None for r in range(5,-1, -1) for c in range(7) }
     global sids_game
     sids_game = UIGame(Human(Piece.RED), levels_dct[level](Piece.YELLOW))
 
@@ -24,12 +19,11 @@ def setup():
     form = GameForm()
     if form.validate_on_submit():
         reset_game(form.difficulty.data)
-        return redirect(url_for('game', difficulty = form.difficulty.data))
+        return redirect(url_for('game'))
     return render_template('setup.html', template_form = form)
 
-@app.route('/game/<string:difficulty>', methods = ['POST', 'GET'])
-def game(difficulty):
-    form = MoveForm()
+@app.route('/game', methods = ['POST', 'GET'])
+def game():
     number_form = NumberForm()
     game_over = False
     if number_form.validate_on_submit():
@@ -67,4 +61,4 @@ def game(difficulty):
                         flash('Unlucky. You have lost!')
         else:
             flash('Invalid move')
-    return render_template('game.html', difficulty = difficulty, board = sids_game.move_dictionary, template_form = form, game_over = game_over, number_form = number_form, dct2 = str_to_num_dct)
+    return render_template('game.html', board = sids_game.move_dictionary, game_over = game_over, number_form = number_form)
