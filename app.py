@@ -6,6 +6,7 @@ from player import Human, RandomAI, MediumAI, HardAI
 from grid import Piece
 
 levels_dct = {'Easy': RandomAI, 'Medium': MediumAI, 'Hard': HardAI}
+sids_game = UIGame(Human(Piece.RED), RandomAI(Piece.YELLOW))
 
 def reset_game(level):
     global sids_game
