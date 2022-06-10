@@ -16,6 +16,7 @@ class Game:
         self.p2 = player_2
         self.current_player = self.p1
         self.next_player = self.p2
+        self.move_dictionary = {str(r) + str(c): None for r in range(5,-1, -1) for c in range(7) }
         
     def change_player(self):
         # switches current_player and next_player
@@ -41,11 +42,13 @@ class Game:
             self.change_player()
        
 class UIGame(Game): 
+    
     def valid_move(self, move: int) -> bool:
         return move in self.grid.valid_moves()
     
     def make_move(self, move: int):
         self.grid.make_move(self.p1.token, move)
+        self.move_dictionary[self.last_move()] = 'r'
         # self.print_grid()
     
     def get_player_win_state(self):
@@ -57,15 +60,16 @@ class UIGame(Game):
     
     def ai_move(self):
         self.p2.make_move(self.grid)
+        self.move_dictionary[self.last_move()] = 'y'
     
-    def last_move(self):
+    def last_move(self) -> str:
         return str(self.grid.last_move.r) + str(self.grid.last_move.c)
     
     
 
-class_dict = {0: MiniMax0AI, 1: MiniMax1AI, 2: MiniMax2AI, 3: MiniMax3AI, 4: MiniMax4AI, 5: MiniMax5AI, 6: MiniMax6AI}
-score_dict = {n: [] for n in range(7)}
-players = [1,2,3,4,5,6]
+# class_dict = {0: MiniMax0AI, 1: MiniMax1AI, 2: MiniMax2AI, 3: MiniMax3AI, 4: MiniMax4AI, 5: MiniMax5AI, 6: MiniMax6AI}
+# score_dict = {n: [] for n in range(7)}
+# players = [1,2,3,4,5,6]
 
 
 # for p1 in players:

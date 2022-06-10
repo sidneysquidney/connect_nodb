@@ -49,7 +49,6 @@ def game(difficulty):
             move = 6
         if sids_game.valid_move(move):
             sids_game.make_move(move)
-            dct[sids_game.last_move()] = 'r'
             state = sids_game.get_player_win_state()
             if state.is_ended:
                 game_over = True
@@ -59,7 +58,6 @@ def game(difficulty):
                     flash('Congratulations. You are the winner!')
             else:
                 sids_game.ai_move()
-                dct[sids_game.last_move()] = 'y'
                 state = sids_game.get_ai_win_state()
                 if state.is_ended:
                     game_over = True
@@ -69,4 +67,4 @@ def game(difficulty):
                         flash('Unlucky. You have lost!')
         else:
             flash('Invalid move')
-    return render_template('game.html', difficulty = difficulty, board = dct, template_form = form, game_over = game_over, number_form = number_form, dct2 = str_to_num_dct)
+    return render_template('game.html', difficulty = difficulty, board = sids_game.move_dictionary, template_form = form, game_over = game_over, number_form = number_form, dct2 = str_to_num_dct)
